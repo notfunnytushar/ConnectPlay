@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate')%> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/card.css" />   
+
+<h1 style="color: black; text-align: center; font-family: Georgia;">Cricket</h1>
+<div>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="/campgrounds/new">Add Venue</a>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="../sports">See Other Category</a>
+</div>
+<style>
+    body{
+        /* background-image: url("https://cdn.dribbble.com/users/375236/screenshots/4447887/media/2f9dfec36b9f2d13f3fd8eba0faba27f.gif"); */
+        background-image: url("https://thumbs.gfycat.com/MiniatureInsecureIberianemeraldlizard-max-1mb.gif");
+
+      /* background-repeat: no-repeat; */
+      background-size: cover; 
+  
+  /* Set the background to fixed position */
+  background-attachment: fixed;
+  
+  /* Set the background to not repeat */
+  background-repeat: no-repeat;
+  
+  /* Set the background to the center */
+  background-position: center;
+      
+    }
+</style>
+<% for (let campground of campgrounds){
+    if(campground.title === "Cricket" && !campground.author.equals(currentUser._id)) {%>
+        <div class="venues-container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="<%=campground.image%>" alt="">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= campground.title %></h5>
+                    <p class="card-text"><b>Slots Available:</b> <%= campground.participants%></p>
+                    <p class="card-text"><b><%= campground.description %></b></p>
+                    <p class="location-text"><b><%= campground.location%></b></p>
+                    <a class="btn" href="/campgrounds/<%=campground._id%>">View Details</a>
+                </div>
+            </div>
+        </div>
+    <% }
+}%>

@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate')%> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/card.css" />   
+
+<h1 style="color: black; text-align: center; font-family: Georgia;">Hockey</h1>
+<div>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="/campgrounds/new">Add Venue</a>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="../sports">See Other Category</a>
+</div>
+<style>
+    body{
+        background-image: url("https://images.prismic.io/fiftytwo/f6b39bfb-67a2-4703-91c5-11cee423735c_41-Masthead+Desktop-The+Switch-fiftytwo_detail.gif?auto=compress,format&rect=0,0,2280,1264&w=2280&h=1264");
+        background-size: cover;  
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
+  background-position: center;
+      
+    }
+</style>
+<% for (let campground of campgrounds){
+    if(campground.title === "Hockey" && !campground.author.equals(currentUser._id)) {%>
+        <div class="venues-container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="<%=campground.image%>" alt="">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= campground.title %></h5>
+                    <p class="card-text"><b>Slots Available:</b> <%= campground.participants%></p>
+                    <p class="card-text"><b><%= campground.description %></b></p>
+                    <p class="location-text"><b><%= campground.location%></b></p>
+                    <a class="btn" href="/campgrounds/<%=campground._id%>">View Details</a>
+                </div>
+            </div>
+        </div>
+    <% }
+}%>

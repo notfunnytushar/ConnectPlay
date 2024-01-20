@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/card.css" />   
+<style>
+    
+</style>
+
+<!-- <h1 style="color: black; text-align: center; font-family: Georgia;">All Venues</h1> -->
+<div class="headBtn" style="text-align: center;margin: 10px;">
+   <a style=" padding: 10px;font-size: large;" class="btn " href="/campgrounds/new">Add Venue</a>
+   <!-- <a style="padding: 10px;font-size: large;" class="btn " href="../sports">See by Category</a>
+   <a style="padding: 10px;font-size: large;" class="btn" href="campgrounds/search">See by Location</a> -->
+</div>
+ 
+<% var a=-1%>
+<% for (let campground of campgrounds){%>
+    <% if(campground.author.equals(currentUser._id)){%> 
+    <div class="venues-container"> 
+        <div class="card">
+            <div class="card-image">
+                <img src="<%=campground.image%>" alt="">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= campground.title %></h5>
+                <p class="card-text"><b>Slots Available:</b> <%= campground.participants%></p>
+                <p class="card-text"><b><%= campground.description %></b></p>
+                <p class="location-text"><b><%= campground.location%></b></p>
+                <a class="btn" href="/campgrounds/<%=campground._id%>">View Details</a>
+            </div>
+        </div> 
+    </div>
+    <% } %>
+<% }%> 

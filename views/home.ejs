@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    /> 
+</head>
+
+<body>
+    <header>
+        <nav>
+          <div class="logo"><h1 style="font-size: 30px">Connect Play</h1></div>
+          <div class="menu">
+            <!-- <a href="#" style="font-size: 25px">Home</a> -->
+            <div></div>
+            <a href="../sports">Sports</a> 
+            <!-- <a href="../Flight"style="font-size: 23px">Flight</a> -->
+            <a href="../campgrounds">Venues</a>
+             <!-- <a href="../contact">Contact</a> -->
+             <% if(!currentUser){%>
+              <a href="./login" color="black">Login</a>
+         <%   }%>
+           <% if(currentUser){%>
+              <a href="./logout" color="black">Logout</a>
+         <% }%> 
+          </div>
+        </nav>
+  
+        <main>
+          <section>
+            <!-- Find your match, play your game!! -->
+            <div class="heading">
+              <h3 id="pagehead">Connect & Play</h3>
+              <!-- <h1>
+                <span class="change_content">Connect, compete, conquer </span>
+                <span style="margin-top: -10px"> </span>
+              </h1> -->
+              <p class="bor">"Game on! Find players near you"</p>
+            </div>
+
+              <div class="linkcontain">
+                  <a href="../campgrounds/search"><button class="btn btn-outline-success btnone" type="submit">
+                    Search 🔍
+                  </button></a>
+                    <!-- <a href="../Flight"><button class="btn btn-outline-success btnone" type="submit">
+                      Search for Flight Booking Websites!
+                    </button></a> -->
+                  <a href="../campgrounds/new"><button class="btn btn-outline-success btnone" type="submit">
+                    Add Venue ⛱️
+                  </button></a>
+              </div>
+            
+  
+            <!-- <form class="d-flex" role="search"> -->
+              <!-- <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              /> -->
+              <!-- </form> -->
+              
+              
+            
+          </section>
+          
+        </main>
+        
+      </header>
+  
+</body>
+
+</html>

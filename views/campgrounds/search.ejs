@@ -1,0 +1,172 @@
+<% layout('layouts/boilerplate')%> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/card.css" />   
+
+<!-- <h1 style="color: black; text-align: center; font-family: Georgia;">Search By Location</h1> -->
+<div class="headBtn" style="text-align: center;margin: 10px;">
+   <!-- <a style="padding: 10px;font-size: large;" class="btn" href="/campgrounds/new">Add Venue</a> -->
+   <!-- <a style="font-size: large;" class="btn" href="../sports">See By Category</a> -->
+</div> 
+<style>
+  body{  
+      background-image: url("https://img.freepik.com/free-vector/house-searching-concept-landing-page_23-2148317954.jpg?w=1060&t=st=1686063836~exp=1686064436~hmac=58ce926a6e7422a8273bf6a6590329aa0ba197192e81219fc52027dedd4a04cf");
+      background-size:cover;   
+      background-attachment: fixed; 
+      background-repeat: no-repeat; 
+      /* background-position:top;   */
+    }
+  .search-container {
+      scale: 1.2;
+      text-align: center;
+      margin:  auto;
+      width: 400px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .input-group {
+      display: flex;
+      align-items: center;
+      /* width: 100%; */
+      margin-bottom: 5px;
+      /* text-align: center; */
+      margin:  auto;
+      max-width: 400px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+      /* font-size: large; */
+  }
+
+
+  .input-group-text {
+      height: 38px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      padding: 10px;
+  }
+
+  #locationInput {
+      display: inline;
+      /* width: 60%; */
+      margin-right: 5px;
+      /* height:6vh ; */
+      border: 0px;
+      border-radius: 0 4px 4px 0;
+      /* padding: 8px; */
+      font-size: medium;
+  }
+
+  #searchLink {
+      padding: 10px 20px;
+      background-color: black;
+      color: white;   
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  #searchContainer{
+    /* background-color: white; */ 
+    margin: auto;
+    /* height: 15vh; */
+    background: rgba(255, 255, 255, 0.8);
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4vh;
+    box-shadow: 0 10px 60px rgba(59, 20, 20, 0.5);
+    border-radius: 10px;  
+  }  
+      .input-group{
+        margin-bottom: 5vh;
+      }
+      .animate { 
+        animation: expandSearchContainer 0.5s forwards;
+      } 
+      @keyframes expandSearchContainer {
+      0% { 
+        max-width: 300px;   
+      }
+      100% {
+        max-width: 100%;    
+      }
+      }
+
+
+
+
+</style>
+
+
+<% let uniqueLocations = new Set(); %>
+<% for (let campground of campgrounds) { %>
+  <%if(!campground.author.equals(currentUser._id) ){  %>
+    <% uniqueLocations.add(campground.location); %>
+  <% } %>
+<% } %>
+    
+  <div class="animate" id="searchContainer">
+    <!-- <div class="search-container"> -->
+      <div  class="input-group">
+       
+        <span style="background-color: white;" class= "input-group-text"><i style="color: #45a049;" class=" fas fa-search fa-fw"></i></span>
+        <% if(!location){%>
+          <input class="form-control" list="datalistOptions" id="locationInput" placeholder="Select for cities, places..." onchange="updateSearchLink()" onkeydown="handleSearchInput(event)">
+        <%}%>
+        <% if(location){%>
+          <input class="form-control" value="<%=`${location}`%>"  list="datalistOptions" id="locationInput" placeholder="Type to search..." onchange="updateSearchLink()" onkeydown="handleSearchInput(event)">
+        <%}%>
+      
+        <datalist id="datalistOptions">
+          <% for (let location of uniqueLocations) { %>
+            <option value="<%= location %>"></option> 
+          <% } %>
+        </datalist> 
+        <!-- <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span> -->
+        <a id="searchLink" class="btn " href="/campgrounds/search?location=">Search</a>
+      </div>
+    <!-- </div> -->
+      
+    <div >
+
+      <% for (let campground of campgrounds) { %> 
+        <!-- <h1><%=`${location}`%></h1> -->
+        <% if((campground.location.includes(`${location}`) || location===undefined) && !campground.author.equals(currentUser._id) ) { %>
+         <div class="venues-container">
+           <div class="card">
+               <div class="card-image">
+                   <img src="<%=campground.image%>" alt="">
+               </div>
+               <div class="card-body">
+                   <h5 class="card-title">   <%= campground.title %></h5>
+                   <p class="card-text"><b>Slots Available:</b> <%= campground.participants%></p>
+                   <p class="card-text"><b><%= campground.description %></b></p>
+                   <p class="location-text"><b><%= campground.location%></b></p>
+                   <a class="btn" href="/campgrounds/<%=campground._id%>">View Details</a>
+               </div>
+           </div>
+       </div>
+     <% } %>
+    <% } %>
+    </div>
+
+  
+  </div>
+
+
+ 
+  <script>
+    function handleSearchInput(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("searchLink").click();
+      }
+    }
+    function updateSearchLink() {
+      const locationInput = document.getElementById("locationInput");
+      const selectedValue = locationInput.value;
+      const searchLink = document.getElementById("searchLink");
+      searchLink.href = "/campgrounds/search?location=" + selectedValue;
+    }
+    </script> 

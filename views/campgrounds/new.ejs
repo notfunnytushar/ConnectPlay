@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate')%>
+<div style="margin: auto;margin-top: 4vh; background-color: #B4CB9F;border-radius: 10px;box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);padding:10px 0px 0px 0px;max-width: 600px;" class="row">
+    <h1 class="text-center">New Venue</h1>
+    <div style="width: 100%;max-width: 400px;margin: auto;"  class="col-6 offset-3">
+        <form action="/campgrounds" method="POST" novalidate class="validated-form">
+            
+            <div class="mb-3">
+                <label class="form-label" for="sport">Sports</label>
+                <select class="form-select" id="title" name="campground[title]" required>
+                    <option value="Football">Football</option>
+                    <option value="Cricket">Cricket</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Hockey">Hockey</option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="campground[image]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Venue charges per person</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">Rs.</span>
+                    <input type="number"  min="0" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                        aria-describedby="price-label" name="campground[price]" required>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Time and More details</label>
+                <textarea class="form-control" type="text" id="description" name="campground[description]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="participants">Maximum Participants</label>
+                <input class="form-control" type="number"  min="1" id="participants" name="campground[participants]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <button class="btn btn-success">Add Venue</button>
+            </div>
+        </form>
+        <!-- <a href="/campgrounds">All Venues</a> -->
+    </div>
+</div>
+

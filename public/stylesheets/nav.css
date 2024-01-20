@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ 
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 9vh;
+  /* background: rgba(41, 42, 41, 0.8); */
+  background: black;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* text-transform: uppercase; */
+  overflow: hidden;
+padding: 0px 20px 0px 20px;
+}
+
+nav .logo { 
+  text-align: center;
+  font-weight: 100;
+  padding-top: 10px; 
+  white-space: nowrap;
+}
+
+nav .logo a {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fff; 
+}
+
+nav .menu {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav .menu a {
+  margin: 10px;
+  width: auto;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  -webkit-text-stroke-width: 0.5px;
+   
+  /* -webkit-text-stroke-color: #00b894; */
+}
+
+nav .menu a.active {
+  color: green;
+}
+
+nav .menu a:hover {
+  color: #00b894;  
+  -webkit-text-stroke-color: #00b894;
+}
+#name{
+  color: #00b894;
+}
+.menu ul{
+  margin: 0;
+}
+#logout {
+  color: #00b894;
+  display: none;
+}   
+ 
+#user:hover  #logout{ 
+  
+  display: inline;
+}
+
+#user:hover #name {  
+  display: none;
+}
+
+/* Media Query */
+@media screen and (max-width: 800px) { 
+  nav{   
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+   
+  }
+  nav .menu {   
+    display: none; 
+  } 
+  nav:hover .menu{
+    
+    display: flex;
+    margin: auto;
+    flex-direction: column; 
+
+  }
+  nav .logo{ 
+    width: 30%;
+    margin: auto;
+  }  
+  nav:hover{
+    height: 40vh;  
+  }   
+  nav:hover .logo{
+    display: none;
+  }   
+  .menu div{
+    margin: 0px;
+  }    
+   
+}
+

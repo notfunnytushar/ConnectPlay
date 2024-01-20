@@ -1,0 +1,225 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<style>
+  
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+    
+body {
+	/* background-color: aliceblue; */
+  background-color: #323538;
+	/* background-position: center; */
+  position: relative;
+}
+
+
+.title{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 400;
+    padding-top: 100px;
+    margin-bottom: 30px;
+    color: rgb(248, 233, 205);
+}
+
+.card{
+  width: 84rem;
+  height: 180px;
+  margin: 20px 60px;
+  -webkit-text-stroke: 2px black;
+
+  border-radius: 25px;
+  text-align: center;
+  padding-top: 90px;
+  font-size: 75px;
+  color: white;
+  padding-left: 21px;
+  
+}
+
+#card1 {
+  background-image: url(https://cdn.dribbble.com/users/375236/screenshots/4447887/cricket_yorker_dribbble.gif);
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position to your desired value */
+  background-size: cover; /* Adjust the size to your desired value */
+  transition: background-image 0.7s ease;
+}
+
+
+#card2 {
+  background-image: url(https://www.animatedimages.org/data/media/172/animated-tennis-image-0041.gif);
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position to your desired value */
+  background-size: cover; /* Adjust the size to your desired value */
+  transition: background-image 0.7s ease;
+}
+
+#card3 {
+  background-image: url(https://giffiles.alphacoders.com/215/215698.gif);
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position to your desired value */
+  background-size: cover; /* Adjust the size to your desired value */
+  transition: background-image 0.7s ease;
+}
+#card4 {
+  background-image: url(https://i.pinimg.com/originals/76/6e/f6/766ef6790618c71ae15171950c2c5ba7.gif);
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position to your desired value */
+  background-size: cover; /* Adjust the size to your desired value */
+  transition: background-image 0.7s ease;
+}
+#card5 {
+  background-image: url(https://cdn.dribbble.com/users/131302/screenshots/2361022/hockeyplayer.gif);
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position to your desired value */
+  background-size: cover; /* Adjust the size to your desired value */
+  transition: background-image 3s;
+}
+ 
+#card1:hover{
+  /* transform:; */
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+} 
+#card2:hover{
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+} 
+#card3:hover{
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+} 
+#card4:hover{
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+} 
+#card5:hover{
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+} 
+
+
+
+  nav {
+    width: 100%;
+    height: 9vh;
+    background: rgb(21, 22, 22, 0.8);
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding-block: 10px;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    position: fixed;
+    top: 0;
+  }
+  
+  nav .logo {
+    width: 25%;
+    text-align: center;
+    /*background: red;*/
+  }
+
+  nav .logo h1{
+    font-size: 30px;
+  }
+  
+
+  nav .menu {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  nav .menu a {
+    width: auto;
+    text-decoration: none;
+    color: white; 
+    font-size: 20px;
+    font-weight: 50;
+    transition-duration: .4s;
+    transition-timing-function: ease;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: #00b894;
+  }
+  nav .menu a:hover {
+    color: #00b894;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    font-size: 19px;
+  }
+  
+  nav .menu a:first-child {
+	color: #00b894;
+  }
+  nav .menu a:first-child:hover {
+	color: white;
+  }
+  
+
+
+</style>
+<body>
+    <header>
+        <nav>
+          <div class="logo"><h1 style="font-weight: 100">Connect Play</h1></div>
+            <div class="menu">
+
+              <a href="/" color="black" >Home</a>
+              <a href="../campgrounds" color="black">Venues</a>
+              <a href="../campgrounds/search" color="black">Location</a>
+             <% if(!currentUser){%>
+                <a href="./login" color="black">Login</a>
+           <%   }%>
+             <% if(currentUser){%>
+                <a href="./logout" color="black">Logout</a>
+           <% }%> 
+              
+            </div>
+          </nav>
+        </header>
+    <div class="title">
+        Find Category!
+       
+    </div>
+    <div class="con">   
+    
+      <a href="./campgrounds/cricket" class="zoom">
+        <div id="card1" class="card">Cricket 🏏</div>
+      </a> 
+      <a href="./campgrounds/tennis" class="zoom">
+        <div id="card2" class="card">Tennis 🏸</div>
+      </a> 
+      <a href="./campgrounds/basketball" class="zoom">
+        <div id="card3" class="card">
+          BasketBall 🏀
+        </div>
+      </a> 
+      <a href="./campgrounds/football" class="zoom">
+        <div id="card4" class="card">FootBall ⚽</div>
+      </a> 
+      <a href="./campgrounds/hockey" class="zoom">
+        <div id="card5" class="card">
+          Hockey 🏒
+        </div>
+      </a> 
+     
+     
+    </div>
+<footer class="footer bg-dark py-3 mt-auto">
+  <div class="container">
+      <span class="text-muted"style="color: aliceblue; text-align: center;">&copy; Connect Play 2024</span>
+  </div>
+</footer>
+
+
+    
+</body>
+</html>

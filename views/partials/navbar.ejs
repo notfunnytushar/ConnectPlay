@@ -1,0 +1,35 @@
+<nav>
+    <div class="logo">
+      <a href="/">Connect Play</a>
+    </div>
+    <div class="menu">
+      <!-- <ul id="menu-list"> -->
+        <% if (!currentUser) { %>
+            <div>
+                <a href="/register">Register</a>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/login">Login</a>
+            </div>
+        <% } %>
+        <% if (currentUser) { %>
+            <div>
+                <a href="/campgrounds/search"> Location</a>&nbsp;&nbsp;
+            </div> 
+            <div>
+                <a href="../sports">Sports</a>&nbsp;&nbsp
+            </div>
+            <div>
+                <a href="/campgrounds/new">Add</a>&nbsp;&nbsp;
+            </div>
+            <div> 
+                <a href="/campgrounds">Venues</a>&nbsp;&nbsp;
+            </div> 
+            <div id="user"> 
+                      <!-- <a id="name" ><%= currentUser.username %> </a> -->
+                      <a id="name" ><i class="fa fa-user" aria-hidden="true"></i></a>
+                      <a href="/logout" id="logout">Logout</a>
+                    
+            </div>
+        <% } %>
+      <!-- </ul> --> 
+    </div>
+  </nav>

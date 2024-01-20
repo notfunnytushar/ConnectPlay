@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate')%> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/card.css" />   
+
+<h1 style="color: black; text-align: center; font-family: Georgia;">Basketball</h1>
+<div>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="/campgrounds/new">Add Venue</a>
+   <a style="background-color: green; border-width: 0ch;padding: 10px;font-size: large;" class="btn btn-primary" href="../sports">See Other Category</a>
+</div>
+<style>
+    body{
+        /* background-image: ; */
+        background-image: url("https://integralspor.com/assets/filemanager/9c9289559ce5b584e68077a03ec60a15.jpg");
+        background-image: url("https://thumbs.gfycat.com/BaggyAdorableFairybluebird-size_restricted.gif");
+        background-size: cover;  
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
+  background-position: center;
+      
+    }
+</style>
+<% for (let campground of campgrounds){
+    if(campground.title === "Basketball" && !campground.author.equals(currentUser._id)) {%>
+        <div class="venues-container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="<%=campground.image%>" alt="">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= campground.title %></h5>
+                    <p class="card-text"><b>Slots Available:</b> <%= campground.participants%></p>
+                    <p class="card-text"><b><%= campground.description %></b></p>
+                    <p class="location-text"><b><%= campground.location%></b></p>
+                    <a class="btn" href="/campgrounds/<%=campground._id%>">View Details</a>
+                </div>
+            </div>
+        </div>
+    <% }
+}%>
